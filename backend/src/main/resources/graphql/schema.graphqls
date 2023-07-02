@@ -1,0 +1,32 @@
+type Query {
+    blogs: [Blog]
+    authors: [Author]
+}
+
+type Mutation {
+    addBlog(blog: BlogInput): Blog
+    addAuthor(author: AuthorInput): Author
+}
+
+input BlogInput {
+    title: String!
+    body: String
+    authorId: ID
+}
+
+input AuthorInput {
+    name: String!
+}
+
+type Blog {
+    id: ID!
+    title: String!
+    body: String
+    author: Author
+}
+
+type Author {
+    id: ID
+    name: String
+    blogs: [Blog]
+}
