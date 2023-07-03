@@ -1,9 +1,6 @@
 import {
   FormEvent,
-  FormEventHandler,
-  InputHTMLAttributes,
   useRef,
-  useState,
 } from "react";
 import { Query } from "./query";
 

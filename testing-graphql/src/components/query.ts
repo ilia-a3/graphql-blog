@@ -34,14 +34,14 @@ export class Query {
   }) {
     this.graphqlQuery({
       query: `mutation {
-            addBlog(blog: {title: ${args.title}, authorId: ${args.authorId}, body: ${args.body}}){
+            addBlog(blog: {title: "${args.title}", authorId: ${args.authorId}, body: "${args.body}"}){
                 id
             }
         }`,
       variables: {},
-    });
+    }).then(r => console.log(r));
   }
-  public static async getAuthors(): Promise<{ id: number; name: string }[]> {
+  public static getAuthors(): Promise<{ id: number; name: string }[]> {
     const res = this.graphqlQuery({
       query: `query Authors {
         authors {
@@ -60,7 +60,10 @@ export class Query {
       id: number;
       title: string;
       body: string;
-      authorId: number;
+      author: {
+        id: number,
+        name: string
+      };
     }[]
   > {
     const res = this.graphqlQuery({
@@ -69,10 +72,14 @@ export class Query {
                 id
                 title
                 body
-                authorId
-            }
-        }`,
+                author {
+                  id
+                  name
+                }
+        }}`
     });
-    return res.then((data) => data.data.blogs);
+    const data = res.then((data) => data.data.blogs)
+    console.log(await res.then(value => value))
+    return data;
   }
 }

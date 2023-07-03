@@ -1,0 +1,11 @@
+.blog {
+    background-color: #535bf2;
+    border-radius: 20px;
+    padding: 3rem;
+    margin: 3rem 0;
+}
+.blog .author {
+    background-color: #213547;
+    padding: 1rem;
+    border-radius: 20px;
+}

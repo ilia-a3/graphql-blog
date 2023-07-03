@@ -12,13 +12,14 @@ export default function AddBlog() {
       console.log(authorRef.current.value);
       const args: {
         title: string;
-        body: string;
         authorId: number;
+        body: string;
       } = {
         title: titleRef.current.value,
         authorId: +authorRef.current.value,
         body: bodyRef.current.value,
       };
+      console.log(args)
       Query.addBlog(args);
       console.log("submt");
     }
